@@ -100,7 +100,7 @@ The Prostate 158 dataset consists of 158 expert annotated 3T prostate bpMRI imag
 ProstateX dataset does not provide prostate zonal segmentation masks. Cuocolo et al. supplemented the dataset by incorporating lesion and zonal masks to facilitate prostate-related research, including lesion detection and zonal segmentation. The T2-weighted (T2W) images were acquired with an in-plane resolution of 0.5 * 0.5 mm. These cases were labeled with prostate zonal masks, encompassing approximately 4000 slices. Notably, these slices encompass situations where the prostate is not visible or lacks lesion annotations.
 
 # Visulization 
-![Visualization of prostate MRI segmentation](fig/visualization.png)
+![Visualization of prostate MRI segmentation](fig/visulization.png)
 
 # License
 
