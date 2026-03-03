@@ -2,11 +2,6 @@
 ![Framework](fig/method.png)
 This repository is for hands-on training with a custom 3D segmentation model (`ProSeg`) inside the nnU-Net v2 training pipeline.
 
-The target is simple:
-- Learn the nnU-Net v2 data-to-training workflow
-- Run one complete training job end-to-end
-- Modify model/trainer code safely
-
 ## 1) Environment Setup
 
 Install PyTorch first, then install project dependencies:
@@ -30,7 +25,7 @@ Reference: [nnUNet path setup](nnUNet/documentation/setting_up_paths.md)
 
 ## 3) Prepare Dataset (Reuse Existing Public Datasets)
 
-You can reuse common medical segmentation datasets (for example BraTS or MM-WHS), but data must be converted to nnU-Net v2 format.
+You can reuse common medical segmentation datasets (for example Promise12, Prostate158 or ProstateX), but data must be converted to nnU-Net v2 format.
 
 Required format reference:
 - [Dataset format](nnUNet/documentation/dataset_format.md)
@@ -55,13 +50,13 @@ Replace `XXX` with your dataset ID, such as `005`.
 Use this command (single-fold demo):
 
 ```bash
-nnUNetv2_train XXX 3d_fullres 0 -tr ProstateNetTrainer
+nnUNetv2_train XXX 3d_fullres 0 -tr ProSegTrainer
 ```
 
 Optional 5-fold training:
 
 ```bash
-nnUNetv2_train XXX 3d_fullres all -tr ProstateNetTrainer
+nnUNetv2_train XXX 3d_fullres all -tr ProSegTrainer
 ```
 
 Notes:
@@ -71,20 +66,16 @@ Notes:
 ## 6) Key Code Locations
 
 - Trainer definition:
-  `nnUNet/nnunetv2/training/nnUNetTrainer/variants/prostate/prostateNetTrainer.py`
+  `nnUNet/nnunetv2/training/nnUNetTrainer/variants/prostate/ProSegTrainer.py`
 - Model definition:
   `nnUNet/nnunetv2/nets/ProSeg.py` (`ProSeg`)
 
-## 7) Suggested Student Exercises
 
-1. Change `depths` and compare training speed/memory.
-2. Change `embed_dims` and observe accuracy vs. compute tradeoff.
-3. Keep the same dataset and only change one variable per experiment.
 
-## 8) Common Issues
+## 7) Common Issues
 
 - `Could not find requested nnunet trainer ...`
-  - Check trainer name is exactly `ProstateNetTrainer`.
+  - Check trainer name is exactly `ProSegTrainer`.
 - `ModuleNotFoundError`
   - Ensure `sh setup-env.sh` has completed.
   - Confirm `nnUNet` was installed with `pip install -e .` inside the `nnUNet` folder.
